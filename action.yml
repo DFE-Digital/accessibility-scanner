@@ -1,0 +1,26 @@
+name: 'RunPa11y'
+description: 'Run Pa11y CI'
+author: Steven Fawcett
+branding:
+    icon: 'message-square'
+    color: 'blue'
+inputs:
+  MESSAGE:
+    required: true
+  LEVEL:
+    required: false
+    default:  info
+  ENVIRON:
+    required: false
+    default:  development
+  JSON:
+    required: false
+    default:  false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - -m ${{ inputs.MESSAGE }}
+    - -l ${{ inputs.LEVEL }}
+    - -e ${{ inputs.ENVIRON }}
+    - -s ${{ inputs.STATE }}
