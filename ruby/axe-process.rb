@@ -40,7 +40,7 @@ class AxeProcess
       return new_url
    end
 
-   def analyze()
+   def analyze( level )
       @@files.each do | url | 
            uri = URI.parse( url )
            Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https', :verify_mode => OpenSSL::SSL::VERIFY_NONE) do |http|
@@ -49,7 +49,7 @@ class AxeProcess
                response = http.request(request)
                @@log.error "#{response.code} Looking for website : #{url}" if response.code != '200'
                new_url = add_authentication( url )
-               run_axe( url , new_url  ) if response.code == '200'
+               run_axe( @@log , url , new_url , level  ) if response.code == '200'
            end
       end
    end
