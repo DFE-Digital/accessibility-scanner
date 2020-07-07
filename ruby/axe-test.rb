@@ -4,10 +4,12 @@ require 'colorize'
 require 'logger'
 
 def run_axe( log , original , url )
+       status = false
        j = IO.popen("pa11y -c pa11y.config.json --reporter json #{url}" ).read()
        data = JSON.parse(j)
        puts( "#{original} \n".green )
        data.each do | line |
+           status = true if line['type'] == 'error'
            #puts JSON.pretty_generate(line)
            level = line['type'].capitalize
            print( "#{ 0x2022.chr('UTF-8') } #{level}: ".red.bold ) if line['type'] == 'error'
@@ -18,5 +20,6 @@ def run_axe( log , original , url )
            puts( "   #{line['context']} ".white )
            puts( "" )
       end
+      return status
 end
        

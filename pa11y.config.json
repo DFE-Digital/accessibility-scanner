@@ -4,5 +4,5 @@
 			"--no-sandbox"
 		]
 	},
-	"includeWarnings": true
+	"includeWarnings": false
 }

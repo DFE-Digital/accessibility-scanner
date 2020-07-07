@@ -39,7 +39,6 @@ require './axe-modes'
      opts.each do |opt, arg|
         case opt
           when '--sitemap' 
-            usage if not ["warn", "error"].include?( arg )
             usage if mode 
             mode = Mode::SITEMAP 
             file = arg
@@ -65,4 +64,6 @@ if not mode
 end
 
 b = AxeProcess.new( @log ,  mode , file , username , password )
-b.analyze
+status = b.analyze
+exit( 1 ) if status == true 
+exit( 0 )
