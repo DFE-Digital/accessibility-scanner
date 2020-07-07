@@ -7,5 +7,3 @@ test-sitemap:
 test-files:
 	docker run -it  -v $(PWD):/apt/test -e HTTP_USERNAME -e HTTP_PASSWORD accessibility_crawler --file  /apt/test/test.file
 
-test-files2:
-	docker run -it  -v $(PWD):/apt/test -e HTTP_USERNAME -e HTTP_PASSWORD accessibility_crawler --file  /apt/test/test.file -l warn

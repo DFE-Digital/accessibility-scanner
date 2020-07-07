@@ -12,7 +12,6 @@ require './axe-modes'
     authenticate = false
     username = nil
     password = nil
-    level =  Level::WARN
 
    def usage
      puts <<~EOF
@@ -22,7 +21,6 @@ require './axe-modes'
         -f --file  Passed in file is a line seperated list of URLs
         -U --username  Authentication Username
         -P --password  Authentication Password
-        -l --level     Highest level of violations to display warn | error
         -v --verbose  Verbose Logging
         -h --help  Help and Usage
      EOF
@@ -31,7 +29,6 @@ require './axe-modes'
 
     opts = GetoptLong.new(
           [ '--help'    , '-h', GetoptLong::NO_ARGUMENT ],
-          [ '--level'   , '-l', GetoptLong::REQUIRED_ARGUMENT ],
           [ '--sitemap' , '-s', GetoptLong::REQUIRED_ARGUMENT ],
           [ '--file'    , '-f', GetoptLong::REQUIRED_ARGUMENT ],
           [ '--username', '-U', GetoptLong::REQUIRED_ARGUMENT ],
@@ -41,9 +38,6 @@ require './axe-modes'
 
      opts.each do |opt, arg|
         case opt
-          when '--level'
-            level = Level::WARN if arg == "warn" 
-            level = Level::ERROR if arg == "error" 
           when '--sitemap' 
             usage if not ["warn", "error"].include?( arg )
             usage if mode 
@@ -71,4 +65,4 @@ if not mode
 end
 
 b = AxeProcess.new( @log ,  mode , file , username , password )
-b.analyze( level )
+b.analyze
