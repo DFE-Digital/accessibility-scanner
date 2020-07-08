@@ -1,11 +1,11 @@
 require 'getoptlong'
 require 'logger'
 require 'syslog/logger'
-require './axe-process'
-require './axe-modes'
+require './a11y-process'
+require './a11y-modes'
 
 
-    @log = Syslog::Logger.new( 'axe-crawl')
+    @log = Syslog::Logger.new( 'a11y-crawl')
     @log.level = Logger::INFO
     mode = nil
     file = nil
@@ -15,7 +15,7 @@ require './axe-modes'
 
    def usage
      puts <<~EOF
-     Usage: axe_crawl -s|f -U <username> -P <password> <file|url>
+     Usage: a11y-crawl -s|f -U <username> -P <password> <file|url>
      Arguments:
         -s --sitemap  URL is a sitemap 
         -f --file  Passed in file is a line seperated list of URLs

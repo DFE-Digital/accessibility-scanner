@@ -1,6 +1,6 @@
 require 'logger'
-require './axe-modes'
-require './axe-test'
+require './a11y-modes'
+require './a11y-test'
 require 'net/http'
 require 'uri'
 require 'openssl'
@@ -50,7 +50,7 @@ class AxeProcess
                response = http.request(request)
                @@log.error "#{response.code} Looking for website : #{url}" if response.code != '200'
                new_url = add_authentication( url )
-               status = run_axe( @@log , url , new_url ) if response.code == '200'
+               status = run_a11y( @@log , url , new_url ) if response.code == '200'
            end
       end
       return status

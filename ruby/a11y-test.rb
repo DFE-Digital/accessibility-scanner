@@ -1,9 +1,9 @@
 require 'json'
-require './axe-modes'
+require './a11y-modes'
 require 'colorize'
 require 'logger'
 
-def run_axe( log , original , url )
+def run_a11y( log , original , url )
        status = false
        j = IO.popen("pa11y -c pa11y.config.json --reporter json #{url}" ).read()
        data = JSON.parse(j)
