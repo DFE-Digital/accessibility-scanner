@@ -29,6 +29,10 @@ In either mode if the site requires authentication, then the Username and Passwo
     --password , -P HTTP Authentication Password 
     --verbose  , -v Verbose Logging
 ## Docker
+### Repository
+
+    [Docker](https://hub.docker.com/repository/docker/dfedigital/accessibility_crawler) holds versions of the image
+
 ### Build
 
     make build
