@@ -24,6 +24,7 @@ jobs:
         with:
              dockerfile: "Dockerfile"
 
+
       - name: Build and push to Docker Hub
         if: github.ref == 'refs/heads/master'
         uses: docker/build-push-action@v1
@@ -49,3 +50,9 @@ jobs:
           tag_with_ref: true
           tag_with_sha: true
           push: false
+
+      - name: Test with Sitemap 
+        uses: dfedigital/accessibility_crawler
+        with:
+            mode: "sitemap"
+            file: "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"

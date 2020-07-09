@@ -5,14 +5,14 @@ branding:
     icon: 'message-square'
     color: 'blue'
 inputs:
-  SITEMAP:
+  mode:
     required: false
-  FILE:
+  file:
     required: false
 runs:
   using: 'docker'
   image: 'dfedigital/accessibility_crawler:latest'
   args:
-    - -f ${{ inputs.FILE }}
-    - -s ${{ inputs.SITEMAP }}
+    - -f ${{ inputs.file }}
+    - -s ${{ inputs.mode }}
 
