@@ -23,3 +23,29 @@ jobs:
         uses: brpaz/hadolint-action@master
         with:
              dockerfile: "Dockerfile"
+
+      - name: Build and push to Docker Hub
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PERSONAL_ACCESS_TOKEN }}
+          repository: ${{ env.APP_REPOSITORY }}
+          always_pull: true
+          add_git_labels: true
+          tag_with_ref: true
+          tag_with_sha: true
+          push: true
+
+      - name: Build Only
+        if: github.ref != 'refs/heads/master'
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PERSONAL_ACCESS_TOKEN }}
+          repository: ${{ env.APP_REPOSITORY }}
+          always_pull: true
+          add_git_labels: true
+          tag_with_ref: true
+          tag_with_sha: true
+          push: false
