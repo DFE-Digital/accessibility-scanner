@@ -1,0 +1,25 @@
+name: Build and Deploy
+on:
+  repository_dispatch:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+env:
+  APP_REPOSITORY:  dfedigital/accessibility_crawler
+
+jobs:
+  build:
+    name: Build and push to DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        with:
+             fetch-depth: 0
+
+      - name: Lint Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+             dockerfile: "Dockerfile"
