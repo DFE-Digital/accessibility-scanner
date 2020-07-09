@@ -14,5 +14,5 @@ runs:
   image: 'docker://dfedigital/accessibility_crawler:latest'
   args:
     - -f ${{ inputs.file }}
-    - -s ${{ inputs.mode }}
+    - -m ${{ inputs.mode }}
 
