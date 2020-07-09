@@ -5,22 +5,14 @@ branding:
     icon: 'message-square'
     color: 'blue'
 inputs:
-  MESSAGE:
-    required: true
-  LEVEL:
+  SITEMAP:
     required: false
-    default:  info
-  ENVIRON:
+  FILE:
     required: false
-    default:  development
-  JSON:
-    required: false
-    default:  false
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'dfedigital/accessibility_crawler:latest'
   args:
-    - -m ${{ inputs.MESSAGE }}
-    - -l ${{ inputs.LEVEL }}
-    - -e ${{ inputs.ENVIRON }}
-    - -s ${{ inputs.STATE }}
+    - -f ${{ inputs.FILE }}
+    - -s ${{ inputs.SITEMAP }}
+
