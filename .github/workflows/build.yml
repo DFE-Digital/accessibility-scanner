@@ -51,7 +51,7 @@ jobs:
           push: false
 
       - name: Test with Sitemap 
-        uses: dfedigital/accessibility_crawler@v1
+        uses: dfedigital/accessibility-scanner@v1
         with:
             mode: "sitemap"
             file: "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"
