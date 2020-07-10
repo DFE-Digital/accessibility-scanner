@@ -1,5 +1,5 @@
 build:
-	docker build . -t accessibility_crawler:latest 
+	docker build . -t dfedigital/accessibility_crawler:latest
 
 test-sitemap:
 	docker run -it  -e HTTP_USERNAME -e HTTP_PASSWORD accessibility_crawler -m sitemap  -f "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"

@@ -13,6 +13,6 @@ runs:
   using: 'docker'
   image: 'docker://dfedigital/accessibility_crawler:latest'
   args:
-    - -f ${{ inputs.file }}
-    - -m ${{ inputs.mode }}
+    - ${{ inputs.mode }}
+    - ${{ inputs.file }}
 
