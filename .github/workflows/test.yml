@@ -1,0 +1,27 @@
+name: Test
+on:
+  push:
+    branches:
+      - test
+    
+env:
+  APP_REPOSITORY:  dfedigital/accessibility_crawler
+
+jobs:
+  build:
+    name: Build and push to DockerHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        with:
+             fetch-depth: 0
+
+      - name: Test with Sitemap
+        uses: DFE-Digital/accessibility-scanner@v1
+        with:
+            mode: "sitemap"
+            file: "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"
+        env:
+          HTTP_USERNAME: ${{ secrets.HTTP_USERNAME }}
+          HTTP_PASSWORD: ${{ secrets.HTTP_PASSWORD }}
