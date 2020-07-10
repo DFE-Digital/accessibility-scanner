@@ -1,8 +1,8 @@
 require 'getoptlong'
 require 'logger'
 require 'syslog/logger'
-require './a11y-process'
-require './a11y-modes'
+require_relative 'a11y-process'
+require_relative 'a11y-modes'
 
 
     @log = Syslog::Logger.new( 'a11y-crawl')

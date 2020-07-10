@@ -1,6 +1,6 @@
 require 'logger'
-require './a11y-modes'
-require './a11y-test'
+require_relative 'a11y-modes'
+require_relative 'a11y-test'
 require 'net/http'
 require 'uri'
 require 'openssl'

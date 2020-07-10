@@ -1,5 +1,5 @@
 require 'json'
-require './a11y-modes'
+require_relative 'a11y-modes'
 require 'colorize'
 require 'logger'
 
