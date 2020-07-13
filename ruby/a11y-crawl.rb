@@ -22,6 +22,7 @@ require_relative 'a11y-modes'
         -U --username  Authentication Username
         -P --password  Authentication Password
         -v --verbose  Verbose Logging
+        -o --stdout   Log to Stdout
         -h --help  Help and Usage
      EOF
      exit(1)
@@ -33,6 +34,7 @@ require_relative 'a11y-modes'
           [ '--file'    , '-f', GetoptLong::REQUIRED_ARGUMENT ],
           [ '--username', '-U', GetoptLong::REQUIRED_ARGUMENT ],
           [ '--password', '-P', GetoptLong::REQUIRED_ARGUMENT ],
+          [ '--stdout'  , '-o', GetoptLong::NO_ARGUMENT ],
           [ '--verbose' , '-v', GetoptLong::NO_ARGUMENT ]
      )
 
@@ -56,6 +58,8 @@ require_relative 'a11y-modes'
           when '--password'
              password = arg
              authenticate = true
+          when '--stdout'
+             @log = Logger.new(STDOUT)
         end
      end
 
