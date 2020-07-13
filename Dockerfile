@@ -16,8 +16,8 @@ RUN gem install bundler:1.17.2
 
 WORKDIR /app
 COPY pa11y.config.json /app/pa11y.config.json
-COPY *.rb  /app/
-COPY Gemfile* /app/
+COPY ruby/*.rb  /app/
+COPY ruby/Gemfile* /app/
 COPY entrypoint.sh  /app/
 RUN bundle install
 
