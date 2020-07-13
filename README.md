@@ -28,6 +28,8 @@ In either mode if the site requires authentication, then the Username and Passwo
     --username , -U HTTP Authentication User
     --password , -P HTTP Authentication Password 
     --verbose  , -v Verbose Logging
+    --stdout   , -o Send logging to stdout
+    
 ## Docker
 ### Repository
 
@@ -45,9 +47,8 @@ To execute with docker the parameters are passed in, the username and password c
 
 To run with file mode the directory with the test file needs to be mounted as a volume:
 
-    docker run -it  -v $(PWD):/apt/test -e HTTP_USERNAME -e HTTP_PASSWORD accessibility_crawler:latest --file  /apt/test/test.file
+    docker run -t --rm  -v $(PWD):/apt/test accessibility_crawler:v1 -U ${HTTP_USERNAME} -P ${HTTP_PASSWORD} --file  /apt/test/test.file  
 
 To run in sitemap mode is simply:
 
-    docker run -it accessibility_crawler:latest --sitemap  "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"
-
+    docker run -t --rm accessibility_crawler:v1 --sitemap  "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"
