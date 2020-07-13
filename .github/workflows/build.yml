@@ -49,12 +49,3 @@ jobs:
           tag_with_ref: true
           tag_with_sha: true
           push: false
-
-      - name: Test with Sitemap 
-        uses: DFE-Digital/accessibility-scanner@v1
-        with:
-            mode: "sitemap"
-            file: "https://www.bbc.co.uk/news/localnews/locations/sitemap.xml"
-        env:
-          HTTP_USERNAME: ${{ secrets.HTTP_USERNAME }}
-          HTTP_PASSWORD: ${{ secrets.HTTP_PASSWORD }}
